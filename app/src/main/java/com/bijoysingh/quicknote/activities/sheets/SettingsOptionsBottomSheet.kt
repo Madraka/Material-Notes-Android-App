@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.view.View
 import com.bijoysingh.quicknote.R
+import com.bijoysingh.quicknote.activities.LoginActivity
 import com.bijoysingh.quicknote.activities.MainActivity
 import com.bijoysingh.quicknote.activities.ThemedActivity
 import com.bijoysingh.quicknote.activities.external.ImportNoteFromFileActivity
@@ -24,6 +25,15 @@ class SettingsOptionsBottomSheet : OptionItemBottomSheetBase() {
     val activity = context as MainActivity
     val dataStore = DataStore.get(context)
     val options = ArrayList<OptionsItem>()
+    options.add(OptionsItem(
+        title = R.string.home_option_login_with_app,
+        subtitle = R.string.home_option_login_with_app_subtitle,
+        icon = R.drawable.ic_google_icon,
+        listener = View.OnClickListener {
+          IntentUtils.startActivity(context, LoginActivity::class.java)
+          dismiss()
+        }
+    ))
     options.add(OptionsItem(
         title = R.string.home_option_ui_experience,
         subtitle = R.string.home_option_ui_experience_subtitle,
